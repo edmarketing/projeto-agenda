@@ -10,10 +10,10 @@ const principal=document.querySelector("#principal");
 btn_home.addEventListener("click",(evt)=>{
     window.open("./home.html")
 });
-/*
+
 btn_home.addEventListener("click",(evt)=>{
     window.open("./home.html","if_principal");
-});*/
+});
 btn_novo.addEventListener("click",(evt)=>{
     window.open("./novo.html","if_principal");
 });
