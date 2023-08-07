@@ -9,18 +9,18 @@ const principal=document.querySelector("#principal");
 const if_principal=document.querySelector("#if_principal");
 
 btn_home.addEventListener("click",(evt)=>{
-    window.open("./aplicativos/home.html","if_principal");
+    window.open("home.html","if_principal");
 });
 btn_novo.addEventListener("click",(evt)=>{
-    window.open("./aplicativos/novo.html","if_principal");
+    window.open("novo.html","if_principal");
 });
 btn_pesquisar.addEventListener("click",(evt)=>{
-    window.open("./aplicativos/pesquisar.html","if_principal");
+    window.open("pesquisar.html","if_principal");
 });
 
 btn_gestao.addEventListener("click",(evt)=>{
-    window.open("./aplicativos/gestao.html","if_principal");
+    window.open("gestao.html","if_principal");
 });
 btn_sobre.addEventListener("click",(evt)=>{
-    window.open("./aplicativos/sobre.html","if_principal");
+    window.open("sobre.html","if_principal");
 });
