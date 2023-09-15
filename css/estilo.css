@@ -30,6 +30,7 @@
 
 .abaSelecionada{
     background-color: #ddd !important;
+    color: black;
 }
 
 .principal{
@@ -58,7 +59,7 @@
     margin: 10px;
 }
 
-/*=== ABA NOVO ===*/
+/*========= ABA NOVO ================*/
 #novo{
     display: flex;
     flex-direction: column;
@@ -99,7 +100,7 @@
     border-radius: 10px;
 }
 
-/*==ABA PESQUISAR ===*/
+/*========= ABA PESQUISAR ===============*/
 .pesquisa{
     display: flex;    
     flex-direction: row;
@@ -118,7 +119,9 @@
 }
 
 input[type=text]{
-    border: 1px solid #f00; 
+    border: 1px solid #f00;
+    padding: 5px;
+    border-radius: 5px; 
 }
 
 label{
