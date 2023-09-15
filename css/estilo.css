@@ -84,6 +84,7 @@
     align-items: flex-start;
     margin-top: 20px;
     margin-bottom: 10px;
+    /*border: 2px solid #f00;*/ 
 }
 
 .botoesForm{
@@ -96,6 +97,32 @@
     width: 100%;
     padding: 10px;
     border-radius: 10px;
+}
+
+/*==ABA PESQUISAR ===*/
+.pesquisa{
+    display: flex;    
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+}
+
+.campoPesq{
+    display: flex;    
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    /*border: 2px solid #f00;*/ 
+}
+
+input[type=text]{
+    border: 1px solid #f00; 
+}
+
+label{
+    margin-right: 5px;
 }
 
 /*================*/
