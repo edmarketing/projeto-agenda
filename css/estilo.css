@@ -128,4 +128,70 @@ label{
     margin-right: 5px;
 }
 
+.resultado{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 800px;
+}
+
+.titulos{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    width: inherit;
+    background-color: rgb(143, 153, 173);
+    color: #fff;    
+}
+
+.titulo{
+    border-right:1px solid #ddd;
+    padding: 3px;
+}
+
+.dados{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: inherit;
+}
+
+.linhadados{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    width: inherit;
+    background-color: #fff;
+}
+
+.coluna{
+    border-right:1px solid #bbb;
+    padding: 3px;
+}
+
+.c1{
+    width: 4%;
+}
+
+.c2{
+    width: 30%;
+}
+
+.c3{
+    width: 12%;
+}
+
+.c4{
+    width: 27%;
+}
+
+.c5{
+    width: 27%;
+}
+
 /*================*/
+

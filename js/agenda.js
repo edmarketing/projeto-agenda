@@ -10,25 +10,25 @@ const principal=document.querySelector("#principal");
 const if_principal=document.querySelector("#if_principal");
 
 btn_home.addEventListener("click",(evt)=>{
-    AbrirPagina(evt.target,"home.html");    
+    abrirPagina(evt.target,"home.html");    
 });
 btn_novo.addEventListener("click",(evt)=>{
-    AbrirPagina(evt.target,"novo.html");   
+    abrirPagina(evt.target,"novo.html");   
 });
 btn_pesquisar.addEventListener("click",(evt)=>{
-    AbrirPagina(evt.target,"pesquisar.html");
+    abrirPagina(evt.target,"pesquisar.html");
 });
 btn_filtrar.addEventListener("click",(evt)=>{
-    AbrirPagina(evt.target,"filtrar.html");
+    abrirPagina(evt.target,"filtrar.html");
 });
 btn_gestao.addEventListener("click",(evt)=>{
-    AbrirPagina(evt.target,"gestao.html");
+    abrirPagina(evt.target,"gestao.html");
 });
 btn_sobre.addEventListener("click",(evt)=>{
-    AbrirPagina(evt.target,"sobre.html");
+    abrirPagina(evt.target,"sobre.html");
 });
 
-const AbrirPagina=(el,url)=>{
+const abrirPagina=(el,url)=>{
     const abas = [...document.querySelectorAll(".aba")]
     abas.forEach(e=>{
         e.classList.remove("abaSelecionada");
