@@ -128,6 +128,13 @@ label{
     margin-right: 5px;
 }
 
+.dgv{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
 .resultado{
     display: flex;
     justify-content: flex-start;

@@ -16,6 +16,7 @@ btn_pesq.addEventListener("click",(evt)=>{
     .then(res=>res.json())
     .then(res=>{
         dados.innerHTML="";
+        
         res.forEach((el)=>{
             const linha=document.createElement("div");
             linha.setAttribute("class","linhadados");
@@ -40,12 +41,14 @@ btn_pesq.addEventListener("click",(evt)=>{
             c4.innerHTML=el.s_email_contato;
             linha.appendChild(c4);
 
-            const c5=document.createElement("div");
-            c5.setAttribute("class","coluna c5");
+            const c5=document.createElement("div");  
+            c5.setAttribute("class","coluna c5");            
             c5.innerHTML=el.dt_nasc_contato;
             linha.appendChild(c5);
-
+            
             dados.appendChild(linha);
+            
         })    
     });    
 });
+
