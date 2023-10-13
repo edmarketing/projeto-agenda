@@ -1,39 +1,39 @@
-const dados = document.querySelector("#dados");
-const fundopopup = document.querySelector("#fundopopup");
-const btn_gravar = document.querySelector("#btn_gravar");
-const btn_cancelar = document.querySelector("#btn_cancelar");
-const f_id = document.querySelector("#f_id");
-const f_nome = document.querySelector("#f_nome");
-const f_celular = document.querySelector("#f_celular");
-const f_email = document.querySelector("#f_email");
-const f_dtnasc = document.querySelector("#f_dtnasc");
+const dados=document.querySelector("#dados");
+const fundopopup=document.querySelector("#fundopopup");
+const btn_gravar=document.querySelector("#btn_gravar");
+const btn_cancelar=document.querySelector("#btn_cancelar");
+const f_id=document.querySelector("#f_id");
+const f_nome=document.querySelector("#f_nome");
+const f_celular=document.querySelector("#f_celular");
+const f_email=document.querySelector("#f_email");
+const f_dtnasc=document.querySelector("#f_dtnasc");
+const btn_filtrar=document.querySelector("#btn_filtrar");
+const f_filtronome=document.querySelector("#f_filtronome");
 
 btn_gravar.addEventListener("click",(evt)=>{
     fundopopup.classList.add("ocultar");
-    const endpoint = `http://127.0.0.1:1880/atualizarcontatos/${f_id.value}/${f_nome.value}/${f_celular.value}/${f_email.value}/${f_dtnasc.value}`;
+    const endpoint=`http://127.0.0.1:1880/atualizarcontatos/${f_id.value}/${f_nome.value}/${f_celular.value}/${f_email.value}/${f_dtnasc.value}`;
+    console.log(endpoint);
     fetch(endpoint)
     .then(res=>{
         if(res.status==200){
-            alert("Dados atualizados!");
-            preencherdgv();
+            preencherdgv("http://127.0.0.1:1880/pesquisartodoscontatos");
         }else{
-            alert("Erro ao atualizar os dados");
+            alert("Erro ao atualizar dados");
         }
     })
 });
 btn_cancelar.addEventListener("click",(evt)=>{
     fundopopup.classList.add("ocultar");
-})
+});
 
-const preencherdgv=()=>{
+const preencherdgv=(endpoint)=>{   
     dados.innerHTML="";
-    
-    const endpoint = `http://127.0.0.1:1880/pesquisartodoscontatos`;
-    fetch(endpoint)    
+    const endpointtodoscontatos=`http://127.0.0.1:1880/pesquisartodoscontatos`;
+    fetch(endpointtodoscontatos)
     .then(res=>res.json())
     .then(res=>{
         dados.innerHTML="";
-        
         res.forEach((el)=>{
             const linha=document.createElement("div");
             linha.setAttribute("class","linhadados");
@@ -50,7 +50,7 @@ const preencherdgv=()=>{
 
             const c3=document.createElement("div");
             c3.setAttribute("class","coluna c3");
-            c3.innerHTML=el.s_telefone_contato;
+            c3.innerHTML=el.s_celular_contato;
             linha.appendChild(c3);
 
             const c4=document.createElement("div");
@@ -58,21 +58,24 @@ const preencherdgv=()=>{
             c4.innerHTML=el.s_email_contato;
             linha.appendChild(c4);
 
-            const c5=document.createElement("div");  
-            c5.setAttribute("class","coluna c5");            
-            c5.innerHTML=el.dt_nasc_contato;
+            const c5=document.createElement("div");
+            c5.setAttribute("class","coluna c5");
+            c5.innerHTML=el.dt_dtnasc_contato;
             linha.appendChild(c5);
 
-            const c6=document.createElement("div");  
-            c6.setAttribute("class","coluna c6 c_op");            
+            const c6=document.createElement("div");
+            c6.setAttribute("class","coluna c6 c_op");
             const imgdelete=document.createElement("img");
-            imgdelete.setAttribute("src","imagem/deletar.svg");
+            imgdelete.setAttribute("src","delete.svg");
             imgdelete.setAttribute("class","iconeop");
             imgdelete.addEventListener("click",(evt)=>{
+                //console.log(evt.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML);
+                //console.log(evt.target.parentNode.parentNode.firstChild.innerHTML);
                 removerContato(evt.target.parentNode.parentNode.firstChild.innerHTML);
+
             });
             const imgeditar=document.createElement("img");
-            imgeditar.setAttribute("src","imagem/editar.svg");
+            imgeditar.setAttribute("src","edit.svg");
             imgeditar.setAttribute("class","iconeop");
             imgeditar.addEventListener("click",(evt)=>{
                 fundopopup.classList.remove("ocultar");
@@ -81,26 +84,33 @@ const preencherdgv=()=>{
                 f_nome.value=dados[1].innerHTML;
                 f_celular.value=dados[2].innerHTML;
                 f_email.value=dados[3].innerHTML;
-                f_dtnasc.value=dados[4].innerHTML;
+                f_dtnasc.value=dados[4].innerHTML.split("T")[0];       
             });
             c6.appendChild(imgdelete);
             c6.appendChild(imgeditar);
             linha.appendChild(c6);
             
-            dados.appendChild(linha);            
-        })    
-    });    
+            dados.appendChild(linha);
+        })
+    })
 };
 
-preencherdgv()
+preencherdgv();
 
 const removerContato=(id)=>{
     const endpoint=`http://127.0.0.1:1880/deletarcontatos/${id}`;
-    fetch(endpoint)    
+    fetch(endpoint)
     .then(res=>{
         if(res.status==200){
-            preencherdgv();
+            preencherdgv("http://127.0.0.1:1880/pesquisartodoscontatos");
         }
     })
-   
 }
+
+btn_filtrar.addEventListener("click",(evt)=>{
+    if(f_filtronome.value==""){
+        preencherdgv("http://127.0.0.1:1880/pesquisartodoscontatos");
+    }else{
+        preencherdgv(`http://127.0.0.1:1880/filtrar/${f_filtronome.value}`);
+    }
+});

@@ -285,4 +285,16 @@ h2{
     background-color: #aaa;
 }
 
+/*========= ABA FILTRAR =============*/
+.filtro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f00;
+}
+
+.iconefiltro{
+    width: 30px;
+    cursor: pointer;
+}
 /*================*/

@@ -7,6 +7,8 @@ const f_nome = document.querySelector("#f_nome");
 const f_celular = document.querySelector("#f_celular");
 const f_email = document.querySelector("#f_email");
 const f_dtnasc = document.querySelector("#f_dtnasc");
+const btn_filtrar = document.querySelector("#btn_filtrar");
+const f_filtronome = document.querySelector("#f_filtronome");
 
 btn_gravar.addEventListener("click",(evt)=>{
     fundopopup.classList.add("ocultar");
@@ -25,10 +27,10 @@ btn_cancelar.addEventListener("click",(evt)=>{
     fundopopup.classList.add("ocultar");
 })
 
-const preencherdgv=()=>{
+const preencherdgv=(endpoint)=>{
     dados.innerHTML="";
     
-    const endpoint = `http://127.0.0.1:1880/pesquisartodoscontatos`;
+   //const endpoint = `http://127.0.0.1:1880/pesquisartodoscontatos`;
     fetch(endpoint)    
     .then(res=>res.json())
     .then(res=>{
@@ -99,8 +101,15 @@ const removerContato=(id)=>{
     fetch(endpoint)    
     .then(res=>{
         if(res.status==200){
-            preencherdgv();
+            preencherdgv("http://127.0.0.1:1880/pesquisartodoscontatos");
         }
-    })
-   
+    })   
 }
+
+btn_filtrar.addEventListener("click",(evt)=>{
+    if(f_filtronome.value==""){
+        preencherdgv("http://127.0.0.1:1880/pesquisartodoscontatos");
+    }else{
+        preencherdgv(`http://127.0.0.1:1880/filtrar/${f_filtronome.value}`);               
+    } 
+});
