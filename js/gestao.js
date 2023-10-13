@@ -10,7 +10,17 @@ const f_dtnasc = document.querySelector("#f_dtnasc");
 
 btn_gravar.addEventListener("click",(evt)=>{
     fundopopup.classList.add("ocultar");
-})
+    const endpoint = `http://127.0.0.1:1880/atualizarcontatos/${f_id.value}/${f_nome.value}/${f_celular.value}/${f_email.value}/${f_dtnasc.value}`;
+    fetch(endpoint)
+    .then(res=>{
+        if(res.status==200){
+            alert("Dados atualizados!");
+            preencherdgv();
+        }else{
+            alert("Erro ao atualizar os dados");
+        }
+    })
+});
 btn_cancelar.addEventListener("click",(evt)=>{
     fundopopup.classList.add("ocultar");
 })
